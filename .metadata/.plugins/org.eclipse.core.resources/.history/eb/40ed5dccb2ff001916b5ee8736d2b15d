@@ -1,0 +1,57 @@
+package Algorithm;
+
+public class prime_palindrom 
+{
+	public static void main(String[] args)
+		{	
+			int count = 0;
+			for (int i = 0; count < 15; i++)
+			{
+				if (isPrime(i) && isPalindrome(i))
+				{
+					System.out.print(i+"   ");
+					count++;
+					if (count % 10 == 0 && i != 0) 
+						System.out.println();
+				}
+			}
+		}
+
+   public static boolean isPrime(long n)
+   {
+    int c=0;
+    int num = 1000;
+       for (int i = 1; i <=n; i++)
+       {
+    	   for(num =i; num>=1; num--)
+    	   	{
+    		   if(i % num == 0)
+    		   	{
+    			   c++;
+    		   	}
+    	   	}
+       }
+    	   if(c==2)
+    		   return true;
+    	   else
+    		   return false;
+   }
+
+   public static long reverse(long number)
+   {
+       long reverse = 0;
+       while (number != 0)
+       {
+
+           reverse *= 10; // is ignored first iteration
+           reverse += number % 10;
+           number /= 10;
+       }
+       return reverse;
+   }
+   public static boolean isPalindrome(long number)
+   {
+
+       return (number == reverse(number));
+   }
+}
